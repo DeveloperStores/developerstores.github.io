@@ -1,2 +1,76 @@
-// Apne redirect page ke script section mein ye wala URL dalein
-window.location.href = "https://mylinkshortner.github.io/redirect.html?id=heenfr&utm_source=facebook&utm_medium=social&utm_campaign=fb_ref";
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="referrer" content="always">
+    <meta property="og:title" content="Redirecting...">
+    <meta property="og:description" content="Click to continue to the content.">
+    <meta http-equiv="refresh" content="2;url=https://mylinkshortner.github.io/redirect.html?id=heenfr&fbclid=Iwb21leARMHDNjbGNrBEwVYmV4dG4DYWVtAjExAHNydGMGYXBwX2lkDDM1MDY4NTUzMTcyOAABHhzUO3xeJDtGRkPooXvrLY7QmsEpDQiCk8gXw7EJfYJiPFRCDeGXsaGJN_cG_aem_Ejp1pQ-GDrv-C6zMGew1PQ&utm_source=facebook&utm_medium=social&utm_campaign=organic_fb">
+    
+    <title>Redirecting...</title>
+    
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f7f9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            text-align: center;
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        .loader {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #1877f2; /* Facebook Blue */
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 20px;
+        }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+        .btn {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 10px 25px;
+            background-color: #1877f2;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="loader"></div>
+    <h2>Redirecting to Content...</h2>
+    <p>Please wait a moment while we process your request.</p>
+    <a href="https://mylinkshortner.github.io/redirect.html?id=heenfr&fbclid=Iwb21leARMHDNjbGNrBEwVYmV4dG4DYWVtAjExAHNydGMGYXBwX2lkDDM1MDY4NTUzMTcyOAABHhzUO3xeJDtGRkPooXvrLY7QmsEpDQiCk8gXw7EJfYJiPFRCDeGXsaGJN_cG_aem_Ejp1pQ-GDrv-C6zMGew1PQ&utm_source=facebook&utm_medium=social&utm_campaign=organic_fb" class="btn">Click Here if not redirected</a>
+</div>
+
+<script>
+    // JavaScript redirect as a backup
+    setTimeout(function() {
+        var destination = "https://mylinkshortner.github.io/redirect.html?id=heenfr&fbclid=Iwb21leARMHDNjbGNrBEwVYmV4dG4DYWVtAjExAHNydGMGYXBwX2lkDDM1MDY4NTUzMTcyOAABHhzUO3xeJDtGRkPooXvrLY7QmsEpDQiCk8gXw7EJfYJiPFRCDeGXsaGJN_cG_aem_Ejp1pQ-GDrv-C6zMGew1PQ&utm_source=facebook&utm_medium=social&utm_campaign=organic_fb";
+        
+        // Force referral header logic
+        var link = document.createElement('a');
+        link.href = destination;
+        link.rel = 'noreferrer-when-downgrade'; 
+        document.body.appendChild(link);
+        link.click();
+    }, 2500);
+</script>
+
+</body>
+</html>
+
