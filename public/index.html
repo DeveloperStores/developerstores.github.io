@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mind IQ Tester - Results Analytics</title>
-    <!-- Telegram Web App Engine Integration -->
+    <title>Global IQ System - Analytics Panel</title>
+    
+    <!-- Telegram Engine Injection -->
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
     
     <!-- Monetag SDK Verification Module -->
@@ -13,7 +14,7 @@
     <style>
         body {
             font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
-            background: linear-gradient(145deg, #0f0f1a, #1b1b32);
+            background: linear-gradient(135deg, #0a0a14, #121225);
             color: #ffffff;
             text-align: center;
             padding: 20px;
@@ -22,104 +23,142 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            min-height: 90vh;
+            min-height: 95vh;
         }
         .card {
-            background: rgba(255, 255, 255, 0.03);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border-radius: 24px;
-            padding: 30px 20px;
+            background: rgba(255, 255, 255, 0.02);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-radius: 28px;
+            padding: 35px 25px;
             width: 90%;
-            max-width: 400px;
-            box-shadow: 0 12px 40px 0 rgba(0, 0, 0, 0.5);
-            border: 1px solid rgba(255, 255, 255, 0.08);
+            max-width: 420px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.06);
         }
-        h1 { color: #50b3ff; font-size: 26px; margin-top: 0; font-weight: 700; }
-        p { color: #a5a5c5; font-size: 15px; line-height: 1.6; }
-        .score-box {
-            font-size: 54px;
-            font-weight: 800;
+        h1 { color: #64b5f6; font-size: 28px; margin-top: 0; font-weight: 700; letter-spacing: -0.5px; }
+        p { color: #9fa0c3; font-size: 15px; line-height: 1.6; }
+        .score-display {
+            font-size: 64px;
+            font-weight: 900;
             color: #00ffcc;
-            margin: 25px 0;
-            text-shadow: 0 0 20px rgba(0,255,204,0.4);
-            letter-spacing: 1px;
+            margin: 20px 0;
+            text-shadow: 0 0 30px rgba(0,255,204,0.35);
+            letter-spacing: -1px;
         }
-        .status-text {
-            font-size: 16px;
-            color: #ffd633;
+        .status-badge {
+            font-size: 15px;
+            color: #ffd54f;
             font-weight: 600;
-            background: rgba(255, 214, 51, 0.1);
-            padding: 10px 15px;
-            border-radius: 12px;
+            background: rgba(255, 213, 79, 0.08);
+            padding: 12px 18px;
+            border-radius: 16px;
             display: inline-block;
-            margin-bottom: 15px;
+            margin-bottom: 20px;
+            border: 1px solid rgba(255, 213, 79, 0.15);
         }
-        .btn-reward {
+        .btn-action {
             background: linear-gradient(90deg, #ff416c, #ff4b2b);
             border: none;
             color: white;
-            padding: 15px 30px;
+            padding: 16px 30px;
             font-size: 16px;
             font-weight: 700;
             border-radius: 50px;
             cursor: pointer;
-            box-shadow: 0 4px 20px rgba(255, 65, 108, 0.4);
-            transition: all 0.3s ease;
+            box-shadow: 0 6px 25px rgba(255, 65, 108, 0.35);
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
             width: 100%;
             margin-top: 15px;
-            box-sizing: border-box;
         }
-        .btn-reward:active { transform: scale(0.97); opacity: 0.9; }
-        .status-log { margin-top: 15px; color: #ff5555; font-size: 13px; font-weight: 500; }
-        hr { border: 0; border-top: 1px solid rgba(255,255,255,0.08); margin: 30px 0; }
+        .btn-action:active { transform: scale(0.96); opacity: 0.9; }
+        .log-box { margin-top: 15px; color: #ff5252; font-size: 13px; font-weight: 500; min-height: 20px;}
+        hr { border: 0; border-top: 1px solid rgba(255,255,255,0.06); margin: 30px 0; }
     </style>
 </head>
 <body>
 
     <div class="card">
-        <h1>🧠 Mind IQ Analyzer</h1>
-        <p>Aapke answers ko global dataset matrix se evaluate kar diya gaya hai.</p>
+        <h1 id="ui-title">IQ Analytics</h1>
+        <p id="ui-desc">Processing matrix verification...</p>
         
-        <!-- Live Variable Scoreboard -->
-        <div class="score-box" id="display-iq">Calculating...</div>
-        <div class="status-text" id="display-status">Analyzing performance...</div>
+        <div class="score-display" id="ui-iq">---</div>
+        <div class="status-badge" id="ui-status">Calculating metrics...</div>
 
         <hr>
 
-        <h4 style="margin: 0 0 10px 0; color: #ffb3ff;">🎁 Unlock Premium Einstein Tier</h4>
-        <p style="font-size: 13px;">Niche custom reward button par click karke video ad dekhein aur bina kisi fees ke professional certification report payein.</p>
+        <h4 style="margin: 0 0 10px 0; color: #e1bee7; font-size: 16px;" id="ui-reward-title">Unlock Certificate</h4>
+        <p style="font-size: 13px;" id="ui-reward-desc">Watch a premium verification video stream to secure your certification token instantly.</p>
         
-        <button class="btn-reward" onclick="triggerRewardedVerification()">📺 Watch Ad & Claim Reward</button>
-        <div id="ad-error-log" class="status-log"></div>
+        <button class="btn-action" onclick="runPremiumAdPipeline()" id="ui-btn">📺 Watch Ad & Claim</button>
+        <div id="ui-log" class="log-box"></div>
     </div>
 
     <script>
-        // Initiate connection with Telegram core interface
-        const telegramApp = window.Telegram.WebApp;
-        telegramApp.ready();
-        telegramApp.expand(); // Full-screen expansion mode for clean UX
+        const tgApp = window.Telegram.WebApp;
+        tgApp.ready();
+        tgApp.expand();
 
-        // Parse dataset string from URL parameters safely
-        const queryParameters = new URLSearchParams(window.location.search);
-        const correctAnswersCount = parseInt(queryParameters.get('score')) || 0;
-        
-        // Logical calculation equation for mapping IQ
-        let calculatedIQ = 80 + (correctAnswersCount * 15);
-        if (calculatedIQ > 140) calculatedIQ = 140;
+        // Get variables from query parameters
+        const params = new URLSearchParams(window.location.search);
+        const userScore = parseInt(params.get('score')) || 0;
+        const userLang = params.get('lang') === 'hi' ? 'hi' : 'en';
 
-        document.getElementById('display-iq').innerText = "IQ: " + calculatedIQ;
-        
-        // Evaluation conditions
-        if (calculatedIQ >= 125) {
-            document.getElementById('display-status').innerText = "⚡ Mastermind Level Logic!";
-        } else if (calculatedIQ >= 110) {
-            document.getElementById('display-status').innerText = "🚀 High Average Capabilities";
+        // IQ Algorithm
+        let iqScore = 80 + (userScore * 15);
+        if (iqScore > 140) iqScore = 140;
+
+        document.getElementById('ui-iq').innerText = "IQ: " + iqScore;
+
+        // Internationalization localization configurations dictionary
+        const uiStrings = {
+            en: {
+                title: "🧠 Global IQ Result",
+                desc: "Your cognitive assessment response profiles have been thoroughly analyzed.",
+                rewardTitle: "🎁 Unlock Premium Certificate",
+                rewardDesc: "Watch a short digital video ad to securely generate your verified Einstein-tier certificate badge.",
+                btn: "📺 Watch Ad & Get Reward",
+                loading: "Establishing secure ad connection stream...",
+                success: "🎉 Checked! Digital verification packet dispatched to bot interface.",
+                fail: "Network timeout or closed too early. Please try again.",
+                statusGenius: "⚡ Exceptional Genius Intelligence!",
+                statusHigh: "🚀 Highly Capable Rational Analytics",
+                statusNormal: "🧠 Balanced Cognitive Baseline Metric"
+            },
+            hi: {
+                title: "🧠 Global IQ Result",
+                desc: "Aapke dimaagi performance matrix ka analysis complete ho chuka hai.",
+                rewardTitle: "🎁 Premium Certificate Unlock Karein",
+                rewardDesc: "Ek choti video ad dekhein aur bina kisi verification fees ke apna official genius level certificate paayein.",
+                btn: "📺 Video Dekhein & Reward Paayein",
+                loading: "Ad verification server se connect ho raha hai...",
+                success: "🎉 Checked! Verification successful. Data bot ko bhej diya gaya hai.",
+                fail: "Ad load nahi ho saki ya jaldi band ho gayi. Kripya fir se click karein.",
+                statusGenius: "⚡ Alag hi Level ka Tezz Dimaag!",
+                statusHigh: "🚀 Shandaar Logical Analytics Power",
+                statusNormal: "🧠 Normal balanced human mind metrics"
+            }
+        };
+
+        const currentUI = uiStrings[userLang];
+
+        // Apply dynamic translation text rendering
+        document.getElementById('ui-title').innerText = currentUI.title;
+        document.getElementById('ui-desc').innerText = currentUI.desc;
+        document.getElementById('ui-reward-title').innerText = currentUI.rewardTitle;
+        document.getElementById('ui-reward-desc').innerText = currentUI.rewardDesc;
+        document.getElementById('ui-btn').innerText = currentUI.btn;
+
+        // Status configuration execution mapping
+        if (iqScore >= 125) {
+            document.getElementById('ui-status').innerText = currentUI.statusGenius;
+        } else if (iqScore >= 110) {
+            document.getElementById('ui-status').innerText = currentUI.statusHigh;
         } else {
-            document.getElementById('display-status').innerText = "🧠 Normal Human Baseline Power";
+            document.getElementById('ui-status').innerText = currentUI.statusNormal;
         }
 
-        // 1. Automatic In-App Interstitial Configuration Object
+        // 1. In-App Interstitial Configuration Run Configuration (Automatic Ads Engine)
         show_11130864({
           type: 'inApp',
           inAppSettings: {
@@ -131,25 +170,24 @@
           }
         });
 
-        // 2. Manual Programmatic Action for Rewarded Interstitial
-        function triggerRewardedVerification() {
-            document.getElementById('ad-error-log').style.color = "#ffd633";
-            document.getElementById('ad-error-log').innerText = "Synchronizing script video engine...";
+        // 2. Interactive Programmatic Event Loop for Manual Monetag Action 
+        function runPremiumAdPipeline() {
+            document.getElementById('ui-log').style.color = "#ffd54f";
+            document.getElementById('ui-log').innerText = currentUI.loading;
             
             show_11130864().then(() => {
-                // Executed successfully upon ad watch verification complete
-                document.getElementById('ad-error-log').style.color = "#00ffcc";
-                document.getElementById('ad-error-log').innerText = "🎉 Verification Checked! Reward sent to your chatbot loop.";
+                // Triggered instantly if reward confirmation validated
+                document.getElementById('ui-log').style.color = "#00ffcc";
+                document.getElementById('ui-log').innerText = currentUI.success;
                 
-                // Communication buffer dispatch back to main telegraf system
                 setTimeout(() => {
-                    telegramApp.sendData("reward_unlocked");
-                    telegramApp.close();
-                }, 1500);
+                    tgApp.sendData("reward_unlocked");
+                    tgApp.close();
+                }, 1600);
 
-            }).catch((error) => {
-                document.getElementById('ad-error-log').style.color = "#ff5555";
-                document.getElementById('ad-error-log').innerText = "Ad system dynamic timeout. Please press again in 5 seconds.";
+            }).catch((e) => {
+                document.getElementById('ui-log').style.color = "#ff5252";
+                document.getElementById('ui-log').innerText = currentUI.fail;
             });
         }
     </script>
