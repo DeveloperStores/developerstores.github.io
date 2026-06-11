@@ -1,7 +1,7 @@
 {
-  "name": "mind-iq-tester-bot",
-  "version": "1.0.0",
-  "description": "Advanced Telegram IQ Tester Bot with Monetag Ads Integration",
+  "name": "global-iq-tester-bot",
+  "version": "1.1.0",
+  "description": "Multi-Language Advanced Telegram IQ Tester Bot with Monetag Ads Integration",
   "main": "index.js",
   "scripts": {
     "start": "node index.js"
