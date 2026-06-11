@@ -1,7 +1,7 @@
 {
   "name": "mindiq-bot",
   "version": "1.0.0",
-  "description": "Telegram Web Bot launcher for MindIQ Tester",
+  "type": "module", 
   "main": "bot.js",
   "scripts": {
     "start": "node bot.js"
