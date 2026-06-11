@@ -2,7 +2,7 @@ const { Telegraf, Markup } = require('telegraf');
 require('dotenv').config();
 
 // Apne Telegram Bot ka Token yahan dalein ya .env file use karein
-const BOT_TOKEN = process.env.BOT_TOKEN || '8245593482:AAHmwHg3lN-cWtl6BVFoGextCXzQ_PbVHLc';
+const BOT_TOKEN = process.env.BOT_TOKEN || 'YOUR_TELEGRAM_BOT_TOKEN_HERE';
 
 if (!BOT_TOKEN || BOT_TOKEN === '8245593482:AAHmwHg3lN-cWtl6BVFoGextCXzQ_PbVHLc') {
     console.error("Error: Please provide a valid Telegram Bot Token!");
