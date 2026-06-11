@@ -1,14 +1,22 @@
 {
-  "name": "global-iq-tester-bot",
-  "version": "1.1.0",
-  "description": "Multi-Language Advanced Telegram IQ Tester Bot with Monetag Ads Integration",
-  "main": "index.js",
+  "name": "mindiq-telegram-bot",
+  "version": "1.0.0",
+  "description": "Telegram Web Bot launcher for MindIQ Tester",
+  "main": "bot.js",
   "scripts": {
-    "start": "node index.js"
+    "start": "node bot.js",
+    "dev": "node --watch bot.js"
   },
+  "keywords": [
+    "telegram",
+    "bot",
+    "telegraf",
+    "webapp"
+  ],
+  "author": "",
+  "license": "ISC",
   "dependencies": {
     "dotenv": "^16.4.5",
-    "express": "^4.19.2",
     "telegraf": "^4.16.3"
   }
 }
