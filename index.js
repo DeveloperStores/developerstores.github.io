@@ -19,8 +19,8 @@ bot.start((ctx) => {
 
 // Bot start karein
 bot.launch()
-    .then(() => console.log('Bot chal gaya hai!'))
-    .catch((err) => console.log('Error:', err));
+    .then(() => console.log('✅ Bot bina kisi crash ke chal gaya hai!'))
+    .catch((err) => console.error('❌ Bot launch karne mein error aaya:', err));
 
 // Graceful stop
 process.once('SIGINT', () => bot.stop('SIGINT'));
