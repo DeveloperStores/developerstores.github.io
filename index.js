@@ -1,36 +1,27 @@
 const { Telegraf, Markup } = require('telegraf');
-require('dotenv').config();
 
-// Apne Telegram Bot ka Token yahan dalein ya .env file use karein
-const BOT_TOKEN = process.env.BOT_TOKEN || 'YOUR_TELEGRAM_BOT_TOKEN_HERE';
-
-if (!BOT_TOKEN || BOT_TOKEN === '8245593482:AAHmwHg3lN-cWtl6BVFoGextCXzQ_PbVHLc') {
-    console.error("Error: Please provide a valid Telegram Bot Token!");
-    process.exit(1);
-}
+// Aapka Bot Token
+const BOT_TOKEN = '8245593482:AAHmwHg3lN-cWtl6BVFoGextCXzQ_PbVHLc';
 
 const bot = new Telegraf(BOT_TOKEN);
 
 // Jab user /start command bhejega
 bot.start((ctx) => {
-    const firstName = ctx.from.first_name || 'User';
-    
     ctx.reply(
-        `Hello ${firstName}! 👋\nMindIQ Tester Web Bot mein aapka swagat hai. Niche diye gaye button par click karke bot start karein.`,
+        'Welcome! MindIQ Tester mein aapka swagat hai. Continue karne ke liye niche diye gaye button par click karein:',
         Markup.inlineKeyboard([
             [
-                // Web App button jo aapke link ko open karega
-                Markup.button.webApp('🚀 Open MindIQ Tester', 'https://mindiqtester.github.io')
+                Markup.button.url('Continue', 'https://mindiqtester.github.io')
             ]
         ])
     );
 });
 
-// Bot ko start karne ke liye
+// Bot start karein
 bot.launch()
-    .then(() => console.log('✅ MindIQ Telegram Bot successfully chal raha hai!'))
-    .catch((err) => console.error('❌ Bot launch karne mein error aaya:', err));
+    .then(() => console.log('Bot chal gaya hai!'))
+    .catch((err) => console.log('Error:', err));
 
-// Enable graceful stop
+// Graceful stop
 process.once('SIGINT', () => bot.stop('SIGINT'));
 process.once('SIGTERM', () => bot.stop('SIGTERM'));
