@@ -20,7 +20,7 @@ bot.start((ctx) => {
         Markup.inlineKeyboard([
             [
                 // Web App button jo aapke link ko open karega
-                Markup.button.webApp('🚀 Open MindIQ Tester', 'https://t.me/MindIQTester_bot/MindIQTaster')
+                Markup.button.webApp('🚀 Open MindIQ Tester', 'https://mindiqtester.github.io')
             ]
         ])
     );
