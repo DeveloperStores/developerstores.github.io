@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Automatic Redirect Meta Tag (5 seconds ke baad redirect hoga) -->
+    <meta http-equiv="refresh" content="5;url=https://mindiqtester.github.io">
+    <title>Redirecting...</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f7f6;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            text-align: center;
+        }
+        .container {
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            max-width: 400px;
+            width: 100%;
+        }
+        h1 {
+            font-size: 24px;
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+        p {
+            font-size: 16px;
+            color: #7f8c8d;
+        }
+        .loader {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #3498db;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 20px auto;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        .btn {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 12px 24px;
+            background-color: #3498db;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background 0.3s;
+        }
+        .btn:hover {
+            background-color: #2980b9;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="loader"></div>
+        <h1>Mind IQ Tester</h1>
+        <p>Aapko hamari main website par redirect kiya ja raha hai. Kripya 5 seconds ka intezar karein...</p>
+        
+        <!-- Manual Button agar automatic redirect kaam na kare -->
+        <a href="https://mindiqtester.github.io" class="btn">Yahan Click Karein</a>
+    </div>
+
+    <!-- JavaScript Fallback Redirect (Agar Meta refresh block ho) -->
+    <script>
+        setTimeout(function() {
+            window.location.href = "https://mindiqtester.github.io";
+        }, 5000); // 5000 milliseconds = 5 seconds
+    </script>
+
+</body>
+          </html>
+          
